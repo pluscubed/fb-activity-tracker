@@ -1,0 +1,26 @@
+{
+  "name": "fb-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "main": "node index.js",
+    "view": "serve viewer",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "axios-cookiejar-support": "^1.0.0",
+    "fetch-cookie": "^0.10.1",
+    "form-data": "^3.0.0",
+    "jsdom": "^16.4.0",
+    "node-cleanup": "^2.1.2",
+    "node-fetch-cookies": "^1.4.2",
+    "tough-cookie": "^4.0.0"
+  },
+  "devDependencies": {
+    "prettier": "2.1.1"
+  }
+}

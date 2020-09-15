@@ -1,0 +1,16 @@
+.active-block-container {
+  height: 14px;
+}
+
+.active-block {
+  height: 14px;
+  width: 100%;
+}
+.date-label {
+  width: 200px;
+}
+
+.row {
+  height: 84px;
+  overflow: hidden;
+}
