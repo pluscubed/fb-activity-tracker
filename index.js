@@ -19,10 +19,11 @@ const db = fs.existsSync(DB_FILE)
   : { recorded: [], users: {} };
 
 const startTime = new Date().getTime();
+db.recorded.push([startTime, Number.MAX_VALUE]);
 
 const onExit = () => {
   console.log("saving...");
-  db.recorded.push([startTime, new Date().getTime()]);
+  db.recorded.last()[1] = new Date().getTime();
   fs.writeFileSync(DB_FILE, JSON.stringify(db));
 };
 
@@ -118,6 +119,7 @@ async function main() {
       }
     }
 
+    console.log("saving...");
     fs.writeFileSync(DB_FILE, JSON.stringify(db));
 
     const sleepTime = 60000 + Math.random() * 120000;

@@ -48,7 +48,12 @@ class App extends React.Component {
       }
     }
 
-    this.setState({ entries, earliestTimestamp, latestTimestamp });
+    this.setState({
+      entries,
+      recorded: db.recorded,
+      earliestTimestamp,
+      latestTimestamp,
+    });
   }
 
   rowRenderer = ({
@@ -75,6 +80,36 @@ class App extends React.Component {
                 <div
                   className="absolute active-block"
                   style=${{ backgroundColor: color, left: left + "%" }}
+                ></div>
+              `;
+            })}
+            ${this.state.recorded.map(([start, end], i) => {
+              const color = "#fff";
+
+              const leftTs = end;
+              const rightTs =
+                i < this.state.recorded.length - 1
+                  ? this.state.recorded[i + 1][0]
+                  : this.state.latestTimestamp;
+
+              const left =
+                ((leftTs - this.state.earliestTimestamp) /
+                  (this.state.latestTimestamp - this.state.earliestTimestamp)) *
+                100;
+              const right =
+                ((this.state.latestTimestamp - rightTs) /
+                  (this.state.latestTimestamp - this.state.earliestTimestamp)) *
+                100;
+              return html`
+                <div
+                  className="absolute active-block"
+                  style=${{
+                    backgroundColor: color,
+                    left: left + "%",
+                    right: right + "%",
+                    width: "unset",
+                    zIndex: 5,
+                  }}
                 ></div>
               `;
             })}
